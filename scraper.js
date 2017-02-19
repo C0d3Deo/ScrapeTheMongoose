@@ -1,4 +1,5 @@
 var express = require("express");
+var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 
@@ -13,9 +14,12 @@ mongoose.Promise = Promise;
 
 var app = express();
 app.use(logger("dev"));
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(bodyParser.urlencoded({extended: true}));
+
+//handlebars set for shortened extension
+app.engine(".hbs", exphbs({extname: ".hbs"}));
+app.set("view engine", ".hbs");
+
 app.use(express.static("public"));
 
 
