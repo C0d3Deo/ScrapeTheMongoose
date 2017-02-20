@@ -5,10 +5,10 @@ var router = express.Router();
 
 
 router.get("/", function(req, res) {
-  res.send(index.html);
+  res.render("index");
 });
 
-router.get("/scrape", function(req, res) {
+router.get("api/scrape", function(req, res) {
   request('http://www.gamasutra.com', function (error, response, html) {
 
   	// Load the HTML into cheerio and save it to a variable

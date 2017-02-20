@@ -17,8 +17,8 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 //handlebars set for shortened extension
-app.engine(".hbs", exphbs({extname: ".hbs"}));
-app.set("view engine", ".hbs");
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
 
